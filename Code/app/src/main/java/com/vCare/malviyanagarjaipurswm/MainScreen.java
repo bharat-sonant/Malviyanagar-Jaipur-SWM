@@ -10,7 +10,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.vCare.malviyanagarjaipurswm.Fragments.CardData;
 import com.vCare.malviyanagarjaipurswm.Fragments.ComplainPage;
 import com.vCare.malviyanagarjaipurswm.Fragments.HomePage;
-import com.vCare.malviyanagarjaipurswm.Fragments.LocationPage;
 import com.vCare.malviyanagarjaipurswm.Fragments.ProfilePage;
 
 public class MainScreen extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -31,7 +30,6 @@ public class MainScreen extends AppCompatActivity implements BottomNavigationVie
     HomePage homePage = new HomePage();
     ProfilePage profilePage = new ProfilePage();
     ComplainPage complainPage = new ComplainPage();
-    LocationPage locationPage = new LocationPage();
     CardData cardData = new CardData();
 
     @Override
@@ -47,10 +45,6 @@ public class MainScreen extends AppCompatActivity implements BottomNavigationVie
 
             case R.id.complaintsBtn:
                 getSupportFragmentManager().beginTransaction().replace(R.id.contains, complainPage).commit();
-                return true;
-
-            case R.id.locationBtn:
-                getSupportFragmentManager().beginTransaction().replace(R.id.contains, locationPage).commit();
                 return true;
 
             case R.id.scanCardData:

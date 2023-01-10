@@ -4,13 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+
+import androidx.fragment.app.Fragment;
 
 import com.vCare.malviyanagarjaipurswm.R;
 
@@ -32,23 +31,25 @@ public class ProfilePage extends Fragment {
         cardNumberET = view.findViewById(R.id.cardNumberET);
         wardNumberET = view.findViewById(R.id.wardNumberET);
 
+        sharedPreferences = getContext().getSharedPreferences("CITIZEN APP", Context.MODE_PRIVATE);
+
         getData();
 
         return view;
     }
 
     private void getData() {
-        sharedPreferences = getContext().getSharedPreferences("CITIZEN APP", Context.MODE_PRIVATE);
-        String name = sharedPreferences.getString("NAME","");
-        String mobile = sharedPreferences.getString("MOBILE","");
-        String cardNumber = sharedPreferences.getString("CARD NUMBER","");
-        String ward = sharedPreferences.getString("WARD","");
+
+        String name = sharedPreferences.getString("NAME", "");
+        String mobile = sharedPreferences.getString("MOBILE", "");
+        String cardNumber = sharedPreferences.getString("CARD NUMBER", "");
+        String ward = sharedPreferences.getString("WARD", "");
 
         nameET.setText(name);
         mobileNumberET.setText(mobile);
-        if (sharedPreferences.getString("CARD NUMBER","").equals("")){
+        if (sharedPreferences.getString("CARD NUMBER", "").equals("")) {
             cardNumberET.setText("Card number is not available");
-        }else {
+        } else {
             cardNumberET.setText(cardNumber);
         }
 

@@ -17,6 +17,8 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class Notification extends FirebaseMessagingService {
 
+    private static final int DEFAULT_ALL = 1234;
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onMessageReceived(@NonNull RemoteMessage message) {
@@ -28,6 +30,7 @@ public class Notification extends FirebaseMessagingService {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void sendNotification(RemoteMessage message) {
+
         NotificationManager notif = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         android.app.Notification notify = null;
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext());
@@ -37,26 +40,28 @@ public class Notification extends FirebaseMessagingService {
         Uri soundUri = Uri.parse("android.resource://" + getApplicationContext().getPackageName() + "/" + R.raw.swachh);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel("MAN", "NOTIFICATION_CHANNEL_NAME", NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel notificationChannel = new NotificationChannel("MAN", "vCare_Alert", NotificationManager.IMPORTANCE_HIGH);
             notificationChannel.enableLights(true);
             notificationChannel.setLightColor(Color.RED);
-            notificationChannel.setSound(soundUri,audioAttributes);
+            notificationChannel.setSound(soundUri, audioAttributes);
             notificationChannel.enableVibration(true);
             notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 400});
             assert notif != null;
-            mBuilder.setChannelId("MAN").setContentTitle("WeVOIS Labs द्वारा नोटिफ़िकेशन")
+            mBuilder.setChannelId("MAN").setContentTitle("vCare द्वारा नोटिफ़िकेशन")
                     .setContentText("कचरे वाली गाड़ी जल्द ही आपके द्वार पर पहुंचने वाली है।   कृप्या कचरा गाडी में डाले।")
-                    .setSmallIcon(R.drawable.logosmall).setColor(Color.GREEN);
+                    .setSmallIcon(R.drawable.vcarelogo)
+                    .setColor(Color.GREEN);
             notif.createNotificationChannel(notificationChannel);
             assert notif != null;
             notif.notify(0 /* Request Code */, mBuilder.build());
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 notify = new android.app.Notification.Builder
-                        (getApplicationContext()).setContentTitle("WeVOIS Labs द्वारा नोटिफ़िकेशन")
-                        .setContentText("कचरे वाली गाड़ी जल्द ही आपके द्वार पर पहुंचने वाली है।   कृप्या कचरा गाडी में डाले।").
-                        setSmallIcon(R.drawable.logosmall).setColor(Color.GREEN)
-                        .setSound(soundUri,audioAttributes).build();
+                        (getApplicationContext()).setContentTitle("vCare द्वारा नोटिफ़िकेशन")
+                        .setContentText("कचरे वाली गाड़ी जल्द ही आपके द्वार पर पहुंचने वाली है।   कृप्या कचरा गाडी में डाले।")
+                        .setSmallIcon(R.drawable.vcarelogo)
+                        .setColor(Color.GREEN)
+                        .setSound(soundUri, audioAttributes).build();
             }
 
             notify.flags |= android.app.Notification.FLAG_AUTO_CANCEL;

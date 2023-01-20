@@ -306,7 +306,6 @@ public class HomePage extends Fragment {
         }
     }
 
-<<<<<<< HEAD
     private void getUserName() {
         getDataBase();
 
@@ -340,7 +339,7 @@ public class HomePage extends Fragment {
             }
         });
     }
-=======
+
 //    private void getUserName() {
 //        getDataBase();
 //
@@ -372,5 +371,4 @@ public class HomePage extends Fragment {
 //            }
 //        });
 //    }
->>>>>>> 5d6d5c323d6a39fb3a074cf389cfaa2f9afd8012
 }

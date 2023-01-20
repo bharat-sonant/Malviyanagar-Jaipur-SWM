@@ -64,6 +64,9 @@ public class CardData extends Fragment {
         linearLayout = view.findViewById(R.id.linearLayout);
         okBtn = view.findViewById(R.id.okBtn);
 
+//        preferences = getActivity().getSharedPreferences("CITIZEN APP", Context.MODE_PRIVATE);
+//        ref = FirebaseDatabase.getInstance(preferences.getString("PATH", "")).getReference();
+
         setMonthSpinner();
         setYearSpinner();
         getScanData();

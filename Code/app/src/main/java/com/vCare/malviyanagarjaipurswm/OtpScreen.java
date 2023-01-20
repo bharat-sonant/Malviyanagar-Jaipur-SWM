@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthSettings;
@@ -131,7 +132,7 @@ public class OtpScreen extends AppCompatActivity {
             }
         }.start();
 
-        String phone = "+91" + enterNumberET.getText().toString();
+        String phone = "+91"+enterNumberET.getText().toString();
         if (phone.isEmpty()) {
             enterNumberET.setError("Phone number is required");
             enterNumberET.requestFocus();
@@ -198,10 +199,10 @@ public class OtpScreen extends AppCompatActivity {
                     editor.putBoolean("LOGIN", true);
                     editor.apply();
 
-
                     Intent i = new Intent(OtpScreen.this, MainScreen.class);
                     startActivity(i);
                 } else {
+                    Toast.makeText(OtpScreen.this, "Enter Right OTP", Toast.LENGTH_SHORT).show();
                     Log.e("data", "Failed");
                 }
 

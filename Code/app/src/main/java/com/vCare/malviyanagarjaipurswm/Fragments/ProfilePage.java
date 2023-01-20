@@ -26,10 +26,10 @@ public class ProfilePage extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_page, container, false);
 
-        nameET = view.findViewById(R.id.nameET);
+//        nameET = view.findViewById(R.id.nameET);
         mobileNumberET = view.findViewById(R.id.mobileNumberET);
         cardNumberET = view.findViewById(R.id.cardNumberET);
-        wardNumberET = view.findViewById(R.id.wardNumberET);
+//        wardNumberET = view.findViewById(R.id.wardNumberET);
 
         sharedPreferences = getContext().getSharedPreferences("CITIZEN APP", Context.MODE_PRIVATE);
 
@@ -40,20 +40,20 @@ public class ProfilePage extends Fragment {
 
     private void getData() {
 
-        String name = sharedPreferences.getString("NAME", "");
+//        String name = sharedPreferences.getString("NAME", "");
         String mobile = sharedPreferences.getString("MOBILE", "");
         String cardNumber = sharedPreferences.getString("CARD NUMBER", "");
-        String ward = sharedPreferences.getString("WARD", "");
+//        String ward = sharedPreferences.getString("WARD", "");
 
-        nameET.setText(name);
+//        nameET.setText(name);
         mobileNumberET.setText(mobile);
-        if (sharedPreferences.getString("CARD NUMBER", "").equals("")) {
-            cardNumberET.setText("Card number is not available");
-        } else {
+//        if (sharedPreferences.getString("CARD NUMBER", "").equals("")) {
+//            cardNumberET.setText("Card number is not available");
+//        } else {
             cardNumberET.setText(cardNumber);
-        }
+//        }
 
-        wardNumberET.setText(ward);
+//        wardNumberET.setText(ward);
 
     }
 }

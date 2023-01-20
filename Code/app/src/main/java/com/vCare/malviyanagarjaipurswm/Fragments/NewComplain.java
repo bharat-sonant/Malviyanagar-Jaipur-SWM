@@ -122,6 +122,7 @@ public class NewComplain extends Fragment {
                         .child(preferences.getString("CARD NUMBER", "")).updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
+                                setCount();
                                 setMapping();
                             }
                         });
@@ -147,12 +148,7 @@ public class NewComplain extends Fragment {
         model.setDate(date);
         model.setComplaintSource("CitizenApp");
 
-        ref.child("ComplaintsData").child("ComplaintsMapping").child("Open").child(preferences.getString("WARD", "")).push().setValue(model).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                setCount();
-            }
-        });
+        ref.child("ComplaintsData").child("ComplaintsMapping").child("Open").child(preferences.getString("WARD", "")).push().setValue(model);
     }
 
     private void setCount() {

@@ -10,6 +10,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.vCare.malviyanagarjaipurswm.Fragments.CardData;
 import com.vCare.malviyanagarjaipurswm.Fragments.ComplainPage;
 import com.vCare.malviyanagarjaipurswm.Fragments.HomePage;
+import com.vCare.malviyanagarjaipurswm.Fragments.PaymentHistory;
 import com.vCare.malviyanagarjaipurswm.Fragments.ProfilePage;
 
 public class MainScreen extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -31,6 +32,7 @@ public class MainScreen extends AppCompatActivity implements BottomNavigationVie
     ProfilePage profilePage = new ProfilePage();
     ComplainPage complainPage = new ComplainPage();
     CardData cardData = new CardData();
+    PaymentHistory paymentHistory = new PaymentHistory();
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -49,6 +51,9 @@ public class MainScreen extends AppCompatActivity implements BottomNavigationVie
 
             case R.id.scanCardData:
                 getSupportFragmentManager().beginTransaction().replace(R.id.contains, cardData).commit();
+                return true;
+            case R.id.paymentHistory:
+                getSupportFragmentManager().beginTransaction().replace(R.id.contains, paymentHistory).commit();
                 return true;
         }
         return false;

@@ -315,6 +315,8 @@ public class HomePage extends Fragment {
                 String name = snapshot.child("name").getValue(String.class);
                 String mobile = snapshot.child("mobile").getValue(String.class);
                 String latLng = snapshot.child("latLng").getValue(String.class);
+                String houseType = snapshot.child("houseType").getValue().toString();
+                preferences.edit().putString("houseType",houseType).apply();
                 latLng = latLng.replace("(", " ");
                 latLng = latLng.replace(")", " ");
 

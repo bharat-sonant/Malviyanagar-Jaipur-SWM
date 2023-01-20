@@ -12,5 +12,6 @@
     <string name="if_you_have_lost_your_card_or_don_t_know_your_card_number_then_press_fill_form_button">If you have lost your Card or Don\'t know your card number then press Fill Form Button</string>
     <string name="please_fill_the_form">Please Fill the Form/कृपया फॉर्म फिल करे</string>
     <string name="history">History</string>
+    <string name="payment_history">Payment History</string>
 
 </resources>

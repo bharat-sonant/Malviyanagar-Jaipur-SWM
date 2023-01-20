@@ -21,5 +21,10 @@
         android:title="@string/history"
         android:icon="@drawable/time"/>
 
+    <item
+        android:id="@+id/paymentHistory"
+        android:title="@string/payment_history"
+        android:icon="@drawable/ic_baseline_payments_24"/>
+
 
 </menu>

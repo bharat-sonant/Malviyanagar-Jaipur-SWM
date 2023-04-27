@@ -21,10 +21,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Profile"
                 android:gravity="center"
-                android:textSize="20sp"
-                android:textColor="@color/white"/>
+                android:text="Profile"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
         </Toolbar>
 
@@ -46,9 +46,9 @@
             android:id="@+id/mobileNumberTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="10dp"
             android:text="Mobile Number"
-            android:layout_marginStart="3dp"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/start"
             app:layout_constraintTop_toBottomOf="@id/toolbarProfile" />
@@ -70,9 +70,9 @@
             android:id="@+id/cardNumberTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
             android:layout_marginTop="10dp"
             android:text="Card Number"
-            android:layout_marginStart="3dp"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@id/start"
             app:layout_constraintTop_toBottomOf="@id/mobileNumberET" />
@@ -82,9 +82,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="false"
-            android:text="Card Number"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
+            android:text="Card Number"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@id/end"
             app:layout_constraintStart_toStartOf="@id/start"

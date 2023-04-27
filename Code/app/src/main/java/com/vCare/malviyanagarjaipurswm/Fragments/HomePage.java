@@ -24,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -56,6 +57,7 @@ public class HomePage extends Fragment {
     SharedPreferences preferences;
     AlertDialog.Builder ad;
     String token;
+    ConstraintLayout btn_pay_history;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -72,6 +74,7 @@ public class HomePage extends Fragment {
         supervisorContact = view.findViewById(R.id.supervisorContact);
         customerCare = view.findViewById(R.id.customerCare);
         logoutBtn = view.findViewById(R.id.logoutBtn);
+        btn_pay_history = view.findViewById(R.id.btn_pay_history);
 
         // get User Name
 //        getUserName();
@@ -130,13 +133,21 @@ public class HomePage extends Fragment {
             }
         });
 
+        btn_pay_history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.contains, new PaymentHistory()).commit();
+            }
+        });
+
         return view;
 
     }
 
     private void removeToken() {
-            ref.child("CardWardMapping").child(preferences.getString("CARD NUMBER", ""))
-                    .child("Token").removeValue();
+        ref.child("CardWardMapping").child(preferences.getString("CARD NUMBER", ""))
+                .child("Token").removeValue();
     }
 
     private void getDataBase() {
@@ -317,7 +328,7 @@ public class HomePage extends Fragment {
                 String mobile = snapshot.child("mobile").getValue(String.class);
                 String latLng = snapshot.child("latLng").getValue(String.class);
                 String houseType = snapshot.child("houseType").getValue().toString();
-                preferences.edit().putString("houseType",houseType).apply();
+                preferences.edit().putString("houseType", houseType).apply();
                 latLng = latLng.replace("(", " ");
                 latLng = latLng.replace(")", " ");
 

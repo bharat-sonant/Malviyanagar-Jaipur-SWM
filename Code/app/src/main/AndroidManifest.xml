@@ -47,6 +47,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".FeedbackActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDOO1-sUDVCQni5JYRtANw2BWnXkp9MnM4" />

@@ -1,6 +1,7 @@
 package com.vCare.malviyanagarjaipurswm.Model;
 
 public class PaymentHistoryModel {
+
     String transactionDateTime;
     String transactionAmount;
     String retrievalReferenceNo;

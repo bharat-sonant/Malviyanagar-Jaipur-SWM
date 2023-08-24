@@ -14,5 +14,7 @@
     <string name="history">History</string>
     <string name="payment_history">Payment History</string>
     <string name="enter_mobile">Enter your mobile number</string>
+    <string name="customer_care">Customer Care</string>
+    <string name="swachhata_saveshan">सवच्छता सर्वेक्षण</string>
 
 </resources>

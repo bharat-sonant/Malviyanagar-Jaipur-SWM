@@ -10,8 +10,8 @@ android {
         applicationId "com.vCare.malviyanagarjaipurswm"
         minSdk 21
         targetSdk 32
-        versionCode 7
-        versionName "1.0.0.5"
+        versionCode 9
+        versionName "1.0.0.6"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -70,5 +70,6 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     // Add the dependency for the Firebase Authentication library
     implementation 'com.google.firebase:firebase-auth'
+
 
 }

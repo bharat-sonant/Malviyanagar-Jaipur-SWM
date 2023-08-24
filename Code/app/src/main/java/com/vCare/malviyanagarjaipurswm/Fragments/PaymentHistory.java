@@ -126,8 +126,7 @@ public class PaymentHistory extends Fragment {
                     historyAdapter = new PaymentHistoryAdapter(getActivity(), paymentModel);
                     paymentHisRcy.setAdapter(historyAdapter);
                 } else {
-//                    tv_noData.setVisibility(View.VISIBLE);
-//                    progress_bar.setVisibility(View.GONE);
+                    progress_bar.setVisibility(View.GONE);
                 }
             }
 
@@ -170,6 +169,8 @@ public class PaymentHistory extends Fragment {
                     progress_bar.setVisibility(View.GONE);
                     historyAdapter = new PaymentHistoryAdapter(getActivity(), paymentModel);
                     paymentHisRcy.setAdapter(historyAdapter);
+
+                }else {
                     if (paymentModel.size() == 0) {
                         tv_noData.setVisibility(View.VISIBLE);
                         progress_bar.setVisibility(View.GONE);

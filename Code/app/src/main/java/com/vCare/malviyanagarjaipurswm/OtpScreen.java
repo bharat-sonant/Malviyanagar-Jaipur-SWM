@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -52,6 +55,7 @@ public class OtpScreen extends AppCompatActivity {
 
     FirebaseDatabase database;
     DatabaseReference ref;
+    ProgressDialog dialog;
 
 
     @SuppressLint("MissingInflatedId")
@@ -85,8 +89,9 @@ public class OtpScreen extends AppCompatActivity {
             public void onClick(View v) {
                 mobileNumber = enterNumberET.getText().toString();
                 if (mobileNumber.length() == 10) {
-                    getOtpLayout.setVisibility(View.GONE);
-                    verifyLayout.setVisibility(View.VISIBLE);
+                    setProgressBar("","Please Wait",OtpScreen.this,OtpScreen.this);
+//                    getOtpLayout.setVisibility(View.GONE);
+//                    verifyLayout.setVisibility(View.VISIBLE);
                     mobileNumberTV.setText(mobileNumber);
                     sendVerificationCode();
                 } else {
@@ -166,12 +171,16 @@ public class OtpScreen extends AppCompatActivity {
             super.onCodeSent(s, forceResendingToken);
             Log.e("data", "onVerificationCompleted: check B " + s);
             verificationId = s;
+            getOtpLayout.setVisibility(View.GONE);
+            verifyLayout.setVisibility(View.VISIBLE);
+            closeDialog(OtpScreen.this);
         }
     };
 
     private void verifySignInCode() {
         if (verificationId.length() > 0) {
             if (enterOtpET.getText().length() >= 1) {
+                setProgressBar("","Please Wait",OtpScreen.this,OtpScreen.this);
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, enterOtpET.getText().toString());
                 signInWithPhoneAuthCredential(credential);
             } else {
@@ -202,12 +211,37 @@ public class OtpScreen extends AppCompatActivity {
 
                     Intent i = new Intent(OtpScreen.this, MainScreen.class);
                     startActivity(i);
+                    closeDialog(OtpScreen.this);
                 } else {
+                    closeDialog(OtpScreen.this);
                     Toast.makeText(OtpScreen.this, "Enter Right OTP", Toast.LENGTH_SHORT).show();
                     Log.e("data", "Failed");
                 }
 
             }
         });
+    }
+
+    public void setProgressBar(String title, String message, Context context, Activity activity) {
+        closeDialog(activity);
+        dialog = new ProgressDialog(context);
+        dialog.setCancelable(false);
+        dialog.setTitle(title);
+        dialog.setMessage(message);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        if (!dialog.isShowing() && !activity.isFinishing()) {
+            dialog.show();
+        }
+    }
+
+    public void closeDialog(Activity activity) {
+        try {
+            if (dialog != null) {
+                if (dialog.isShowing() && !activity.isFinishing()) {
+                    dialog.dismiss();
+                }
+            }
+        } catch (Exception e) {
+        }
     }
 }

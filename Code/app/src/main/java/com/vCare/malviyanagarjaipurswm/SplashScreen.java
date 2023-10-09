@@ -38,6 +38,8 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        Log.e("TAG","VALUE");
+
         preferences = getSharedPreferences("CITIZEN APP", MODE_PRIVATE);
         reference = FirebaseDatabase.getInstance(Const.path).getReference();
         if (isOnline()){

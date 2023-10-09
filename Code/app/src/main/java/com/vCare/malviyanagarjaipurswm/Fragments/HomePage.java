@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,6 +59,7 @@ public class HomePage extends Fragment {
     AlertDialog.Builder ad;
     String token;
     ConstraintLayout btn_pay_history;
+    Button paymentBtn;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -75,6 +77,7 @@ public class HomePage extends Fragment {
         customerCare = view.findViewById(R.id.customerCare);
         logoutBtn = view.findViewById(R.id.logoutBtn);
         btn_pay_history = view.findViewById(R.id.btn_pay_history);
+        paymentBtn = view.findViewById(R.id.paymentBtn);
 
         // get User Name
 //        getUserName();
@@ -136,9 +139,17 @@ public class HomePage extends Fragment {
         btn_pay_history.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                requireActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.contains, new PaymentHistory()).commit();
                 requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.contains, new PaymentHistory()).commit();
+                        .replace(R.id.contains, new PaymentHistoryFragment()).commit();
             }
+        });
+
+
+        paymentBtn.setOnClickListener(v -> {
+            requireActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.contains, new PaymentHistoryFragment()).commit();
         });
 
         return view;

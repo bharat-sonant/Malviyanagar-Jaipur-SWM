@@ -145,9 +145,9 @@ public class PaymentHistory extends Fragment {
                         Log.e("VCare", " Cheque " + snapshot1.toString());
                         Log.e("VCare", " Cheque key" + snapshot1.getKey());
                         for (DataSnapshot snapshot2 : snapshot1.getChildren()) {
-                            Log.e("VCare", " Cheque " + snapshot2.toString());
-                            Log.e("VCare", " Cheque key" + snapshot2.getKey());
-                            Log.e("VCare", " Cheque key" + snapshot2.child("monthYear").getValue().toString());
+//                            Log.e("VCare", " Cheque " + snapshot2.toString());
+//                            Log.e("VCare", " Cheque key" + snapshot2.getKey());
+//                            Log.e("VCare", " Cheque key" + snapshot2.child("monthYear").getValue().toString());
                             if (snapshot2.hasChild("monthYear")) {
                                 chequeStatus = snapshot2.child("status").getValue().toString();
                                 if (chequeStatus.equals("Pending") || chequeStatus.equals("Declined")) {

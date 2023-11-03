@@ -4,14 +4,14 @@ plugins {
 }
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.vCare.malviyanagarjaipurswm"
+        applicationId "com.vCare.malviyanagarjaipurmsw"
         minSdk 21
-        targetSdk 32
-        versionCode 9
-        versionName "1.0.0.6"
+        targetSdk 33
+        versionCode 2
+        versionName "1.0.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -26,7 +26,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    namespace 'com.vCare.malviyanagarjaipurswm'
+    namespace 'com.vCare.malviyanagarjaipurmsw'
     buildFeatures {
         viewBinding true
     }
@@ -70,6 +70,12 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:31.1.1')
     // Add the dependency for the Firebase Authentication library
     implementation 'com.google.firebase:firebase-auth'
+
+    //Play store console
+    implementation 'com.google.android.play:app-update:2.0.1'
+
+    //Play Integrity API
+    implementation 'com.google.android.play:integrity:1.1.0'
 
 
 }

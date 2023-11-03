@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.vCare.malviyanagarjaipurswm">
+    package="com.vCare.malviyanagarjaipurmsw">
 
     <uses-feature
         android:name="android.hardware.telephony"
@@ -25,21 +25,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CitizenApp"
         tools:replace="android:allowBackup"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".OtpScreen"
+            android:name="com.vCare.malviyanagarjaipurmsw.OtpScreen"
             android:exported="false" />
         <activity
-            android:name=".FormActivity"
+            android:name="com.vCare.malviyanagarjaipurmsw.FormActivity"
             android:exported="false" />
         <activity
-            android:name=".MainScreen"
+            android:name="com.vCare.malviyanagarjaipurmsw.MainScreen"
             android:exported="true" />
         <activity
-            android:name=".Login_Page"
+            android:name="com.vCare.malviyanagarjaipurmsw.Login_Page"
             android:exported="false" />
         <activity
-            android:name=".SplashScreen"
+            android:name="com.vCare.malviyanagarjaipurmsw.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,9 +48,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".FeedbackActivity"
-            android:exported="false" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -67,9 +65,9 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <service android:name=".MyServices" />
+        <service android:name="com.vCare.malviyanagarjaipurmsw.MyServices" />
         <service
-            android:name=".Notification"
+            android:name="com.vCare.malviyanagarjaipurmsw.Notification"
             android:enabled="true"
             android:exported="true">
             <intent-filter>

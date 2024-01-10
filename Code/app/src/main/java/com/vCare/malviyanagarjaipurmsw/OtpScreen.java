@@ -151,12 +151,14 @@ public class OtpScreen extends AppCompatActivity {
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         @Override
         public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+            closeDialog(OtpScreen.this);
             Log.d("data", "onVerificationCompleted: check");
             signInWithPhoneAuthCredential(phoneAuthCredential);
         }
 
         @Override
         public void onVerificationFailed(@NonNull FirebaseException e) {
+            closeDialog(OtpScreen.this);
             Log.e("data", "onVerificationCompleted: check A " + e.toString());
             Toast.makeText(OtpScreen.this, "To many attempts. Please try again later. ", Toast.LENGTH_LONG).show();
         }
@@ -179,9 +181,11 @@ public class OtpScreen extends AppCompatActivity {
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, enterOtpET.getText().toString());
                 signInWithPhoneAuthCredential(credential);
             } else {
+                closeDialog(OtpScreen.this);
                 Log.e("data", "FAILED 1");
             }
         } else {
+            closeDialog(OtpScreen.this);
             Log.e("data", "FAILED 2");
         }
     }

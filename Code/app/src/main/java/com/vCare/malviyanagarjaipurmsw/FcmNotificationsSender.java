@@ -29,8 +29,7 @@ public class FcmNotificationsSender {
 
     private RequestQueue requestQueue;
     private final String postUrl = "https://fcm.googleapis.com/fcm/send";
-    private final String fcmServerKey = "AAAAWLxrVRI:APA91bE4GFtvRHlrde4wgqSzJXGdAMUfU2nif08f49yZaPiFuVXAOfCI8gFgJqpEwnHVpOIPpYwn45FBsjspPZsBzUjd6mJlpL8BXkJqp-Kv1hgiONqPDDXDbV_c_ouXZKfuSgnxsGZQ";
-
+    
     public FcmNotificationsSender(String userFcmToken, String title, String body, Context mContext, Activity mActivity) {
         this.userFcmToken = userFcmToken;
         this.title = title;
@@ -71,7 +70,7 @@ public class FcmNotificationsSender {
 
                     Map<String, String> header = new HashMap<>();
                     header.put("content-type", "application/json");
-                    header.put("authorization", "key=" + fcmServerKey);
+                    header.put("authorization", "key=" + R.string.fcmServerKey);
                     return header;
 
                 }

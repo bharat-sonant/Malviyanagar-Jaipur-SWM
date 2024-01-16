@@ -19,9 +19,9 @@
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/malviya"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/malviya"
         android:supportsRtl="true"
         android:theme="@style/Theme.CitizenApp"
         tools:replace="android:allowBackup"
@@ -66,6 +66,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <service android:name="com.vCare.malviyanagarjaipurmsw.MyServices" />
+
         <service
             android:name="com.vCare.malviyanagarjaipurmsw.Notification"
             android:enabled="true"
@@ -74,6 +75,7 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.vCare.malviyanagarjaipurmsw;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -34,6 +35,7 @@ public class MainScreen extends AppCompatActivity implements BottomNavigationVie
         bottomNavigation.setSelectedItemId(R.id.homeBtn);
 
     }
+
 
     HomePage homePage = new HomePage();
     ProfilePage profilePage = new ProfilePage();

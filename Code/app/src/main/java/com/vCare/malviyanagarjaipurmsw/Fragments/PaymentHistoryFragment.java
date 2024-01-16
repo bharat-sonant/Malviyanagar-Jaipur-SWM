@@ -36,8 +36,8 @@ public class PaymentHistoryFragment extends Fragment {
         webViewContainer.getSettings().setJavaScriptEnabled(true);
         webViewContainer.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webViewContainer.getSettings().setDomStorageEnabled(true);
-        webViewContainer.loadUrl("https://wevois-qa-ccavenue.web.app/");
-//        webViewContainer.loadUrl("https://ccavenuemalviyanagar.web.app/");
+//        webViewContainer.loadUrl("https://wevois-qa-ccavenue.web.app/");
+        webViewContainer.loadUrl("https://ccavenuemalviyanagar.web.app/");
         return view;
     }
     private static class MyWebViewClient extends WebViewClient{

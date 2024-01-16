@@ -23,8 +23,10 @@ public class MyServices extends Service {
     @Override
     public void onCreate() {
         Notification notification = new Notification();
+//        NotificationService notificationService = new NotificationService();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForeground(1,notification );
+//            startForeground(1,notificationService);
         }
         super.onCreate();
     }

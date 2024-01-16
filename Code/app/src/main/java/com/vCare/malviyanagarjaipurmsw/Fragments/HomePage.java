@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,11 +37,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.vCare.malviyanagarjaipurmsw.FcmNotificationsSender;
 import com.vCare.malviyanagarjaipurmsw.R;
 import com.vCare.malviyanagarjaipurmsw.SplashScreen;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
@@ -58,8 +62,9 @@ public class HomePage extends Fragment {
     SharedPreferences preferences;
     AlertDialog.Builder ad;
     String token;
-    ConstraintLayout btn_pay_history;
+    RelativeLayout btn_pay_history;
     Button paymentBtn;
+    boolean notificationStatus = false;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -84,6 +89,8 @@ public class HomePage extends Fragment {
 
         // get Driver and Helper Details
         getDetails();
+
+        getPendingPaymentMonths();
 
         // get Supervisor Contact Number
         getSupervisorContactNumber();
@@ -272,6 +279,84 @@ public class HomePage extends Fragment {
                 Toast.makeText(getContext(), "ERROR:getUserName: " + error, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void getPendingPaymentMonths() {
+        getDataBase();
+        String cardId = preferences.getString("CARD NUMBER", "");
+        ref.child("PaymentCollectionInfo/PaymentCollectionHistory/").child("" + cardId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.getValue() != null) {
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        String key = snapshot1.getKey();
+                        Log.e("Vcare", " KeyMonth " + key);
+                        if (key.equals("Entities")){
+                            for (DataSnapshot snapshot2 : snapshot1.getChildren()) {
+                                for (DataSnapshot snapshot3 : snapshot2.getChildren()) {
+                                    for (DataSnapshot snapshot4 : snapshot3.getChildren()) {
+                                        String status = snapshot4.child("status").getValue().toString();
+                                        if (status.equals("Pending")) {
+//                                            getToken();
+                                            notificationStatus = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }else {
+                            for (DataSnapshot snapshot2 : snapshot1.getChildren()) {
+                                String status = snapshot2.child("status").getValue().toString();
+                                if (status.equals("Pending")) {
+//                                    getToken();
+                                    notificationStatus = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    if (notificationStatus){
+                        getToken();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void getToken() {
+        getDataBase();
+        String card = preferences.getString("CARD NUMBER", "");
+        ref.child("CardWardMapping").child(card).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChild("Token")) {
+                    Log.e("data", "" + card + " " + dataSnapshot.child("Token").getValue().toString());
+                    token = dataSnapshot.child("Token").getValue().toString();
+//                    data extra = new data("Test");
+//                    Notification notification = new Notification("कचरे वाली गाड़ी जल्द ही आपके द्वार पर पहुंचने वाली है।   कृप्या कचरा गाडी में डाले।", "body test");
+//                    new sendNotification(notification, extra, token).execute();
+                    FcmNotificationsSender notificationsSender = new FcmNotificationsSender(token, "", "",
+                            getContext(), getActivity());
+                    notificationsSender.SendNotifications();
+
+                } else {
+                    Log.e("data", "There is no Token");
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     private void superVisorCall() {

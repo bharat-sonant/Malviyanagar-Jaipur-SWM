@@ -36,7 +36,7 @@ public class Notification extends FirebaseMessagingService {
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void sendNotification(String title, String body) {
 
-        Log.e("data val ", "MESSAGESSSS: " + title + " " + body + "");
+//        Log.e("data val ", "MESSAGESSSS: " + title + " " + body + "");
 //        String title = message.getData().get("title").trim();
 //        String body = message.getData().get("body").trim();
         NotificationManager notif = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);

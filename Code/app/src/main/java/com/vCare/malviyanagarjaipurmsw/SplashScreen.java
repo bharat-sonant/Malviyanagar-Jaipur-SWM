@@ -96,7 +96,6 @@ public class SplashScreen extends AppCompatActivity {
 
         }).addOnFailureListener(e -> {
             splashScreen();
-//            Log.e("TAG", "Update Failed: " + e);
         });
     }
 

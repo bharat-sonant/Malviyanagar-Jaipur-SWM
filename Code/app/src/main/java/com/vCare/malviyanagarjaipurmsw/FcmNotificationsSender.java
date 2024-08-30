@@ -39,7 +39,7 @@ public class FcmNotificationsSender {
     }
 
     public void SendNotifications() {
-//        Log.e("Notification sender"," call "+userFcmToken);
+        Log.e("data"," call "+userFcmToken);
         requestQueue = Volley.newRequestQueue(mContext);
         JSONObject mainObj = new JSONObject();
         try {
@@ -50,19 +50,19 @@ public class FcmNotificationsSender {
             notiObject.put("android_channel_id","Notification_Center");
 
             mainObj.put("notification", notiObject);
-//            Log.e("Notification sender",mainObj.toString());
+            Log.e("data",mainObj.toString());
 
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, postUrl, mainObj, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
-//                    Log.e("TAG", "RES: " + response);
+                    Log.e("data", "RES: " + response);
 
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     // code run is got error
-
+                    Log.e("data", "Error: " + error);
                 }
             }) {
                 @Override
@@ -70,15 +70,17 @@ public class FcmNotificationsSender {
 
                     Map<String, String> header = new HashMap<>();
                     header.put("content-type", "application/json");
-                    header.put("authorization", "key=" + R.string.fcmServerKey);
+                    String serverKey = mContext.getString(R.string.fcmServerKey);
+                    header.put("authorization", "key=" + serverKey);
                     return header;
 
                 }
             };
             requestQueue.add(request);
-            
+
         } catch (JSONException e) {
             e.printStackTrace();
+            Log.e("data", "Error 1: " + e);
         }
     }
 }

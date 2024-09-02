@@ -70,8 +70,7 @@ public class FcmNotificationsSender {
 
                     Map<String, String> header = new HashMap<>();
                     header.put("content-type", "application/json");
-                    String serverKey = mContext.getString(R.string.fcmServerKey);
-                    header.put("authorization", "key=" + serverKey);
+                    header.put("authorization", "key=AAAAWLxrVRI:APA91bE4GFtvRHlrde4wgqSzJXGdAMUfU2nif08f49yZaPiFuVXAOfCI8gFgJqpEwnHVpOIPpYwn45FBsjspPZsBzUjd6mJlpL8BXkJqp-Kv1hgiONqPDDXDbV_c_ouXZKfuSgnxsGZQ");
                     return header;
 
                 }
